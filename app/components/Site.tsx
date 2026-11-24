@@ -29,6 +29,7 @@ import {
   ShieldCheck,
 } from "lucide-react";
 import Smooth from "./Smooth";
+import DateField from "./DateField";
 import { HOTEL } from "@/lib/config";
 
 if (typeof window !== "undefined") {
@@ -484,28 +485,24 @@ function Hero() {
             />
           </label>
 
-          <label className="block min-w-0 text-[11px] font-semibold uppercase tracking-widest text-areia">
-            Entrada
-            <input
-              required
-              type="date"
-              className={heroInput}
-              value={f.entrada}
-              onChange={(e) => setF({ ...f, entrada: e.target.value })}
-            />
-          </label>
+          <DateField
+            label="Entrada"
+            labelClass="block text-[11px] font-semibold uppercase tracking-widest text-areia"
+            buttonClass={heroInput}
+            value={f.entrada}
+            placement="top"
+            onChange={(v) => setF({ ...f, entrada: v, saida: f.saida && v && f.saida < v ? "" : f.saida })}
+          />
 
-          <label className="block min-w-0 text-[11px] font-semibold uppercase tracking-widest text-areia">
-            Saída
-            <input
-              required
-              type="date"
-              min={f.entrada}
-              className={heroInput}
-              value={f.saida}
-              onChange={(e) => setF({ ...f, saida: e.target.value })}
-            />
-          </label>
+          <DateField
+            label="Saída"
+            labelClass="block text-[11px] font-semibold uppercase tracking-widest text-areia"
+            buttonClass={heroInput}
+            value={f.saida}
+            min={f.entrada || undefined}
+            placement="top"
+            onChange={(v) => setF({ ...f, saida: v })}
+          />
 
           <label className="col-span-2 block text-[11px] font-semibold uppercase tracking-widest text-areia sm:col-span-1">
             Hóspedes
@@ -1428,27 +1425,23 @@ function Booking() {
           </label>
 
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-8">
-            <label className="block min-w-0 text-xs font-semibold uppercase tracking-widest text-areia">
-              Entrada
-              <input
-                required
-                type="date"
-                className={lineInput}
-                value={f.entrada}
-                onChange={(e) => setF({ ...f, entrada: e.target.value })}
-              />
-            </label>
-            <label className="block min-w-0 text-xs font-semibold uppercase tracking-widest text-areia">
-              Saída
-              <input
-                required
-                type="date"
-                min={f.entrada}
-                className={lineInput}
-                value={f.saida}
-                onChange={(e) => setF({ ...f, saida: e.target.value })}
-              />
-            </label>
+            <DateField
+              label="Entrada"
+              labelClass="block text-xs font-semibold uppercase tracking-widest text-areia"
+              buttonClass={lineInput}
+              value={f.entrada}
+              placement="top"
+              onChange={(v) => setF({ ...f, entrada: v, saida: f.saida && v && f.saida < v ? "" : f.saida })}
+            />
+            <DateField
+              label="Saída"
+              labelClass="block text-xs font-semibold uppercase tracking-widest text-areia"
+              buttonClass={lineInput}
+              value={f.saida}
+              min={f.entrada || undefined}
+              placement="top"
+              onChange={(v) => setF({ ...f, saida: v })}
+            />
           </div>
 
           <label className="block text-xs font-semibold uppercase tracking-widest text-areia">

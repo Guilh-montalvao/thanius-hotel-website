@@ -5,10 +5,29 @@ import "./globals.css";
 const display = Young_Serif({ weight: "400", subsets: ["latin"], variable: "--font-display" });
 const body = Hanken_Grotesk({ subsets: ["latin"], variable: "--font-body" });
 
+const SITE_URL = "https://thanyushotelmontalvania.vercel.app";
+const SITE_TITLE = "Thanyu’s Hotel | Hospedagem no Centro de Montalvânia, MG";
+const SITE_DESCRIPTION =
+  "Portaria 24h, quartos térreos com ar-condicionado, café da manhã mineiro feito pelo Sr. Agostinho e estacionamento seguro na Avenida Confúcio, 215, Centro de Montalvânia, MG.";
+
 export const metadata: Metadata = {
-  title: "Thanyu’s Hotel | Hospedagem no Centro de Montalvânia, MG",
-  description:
-    "Quartos com ar-condicionado, café da manhã completo, Wi-Fi e estacionamento seguro na Avenida Confúcio, no Centro de Montalvânia, Minas Gerais.",
+  metadataBase: new URL(SITE_URL),
+  title: SITE_TITLE,
+  description: SITE_DESCRIPTION,
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    url: SITE_URL,
+    siteName: "Thanyu’s Hotel",
+    locale: "pt_BR",
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+  },
 };
 
 const jsonLd = {
