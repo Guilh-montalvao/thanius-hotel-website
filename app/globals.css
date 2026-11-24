@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+  scrollbar-width: thin;
+  scrollbar-color: #B8481F #1F1A16;
+}
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+body { background: #F6EFE4; color: #1F1A16; -webkit-font-smoothing: antialiased; }
+::selection { background: #B8481F; color: #F6EFE4; }
+
+/* Barra de scroll vertical customizada */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #1F1A16;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #B8481F 0%, #8C3515 100%);
+  border-radius: 9999px;
+  border: 2px solid #1F1A16;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #D4582A;
+}
+
+.azulejo {
+  background-color: #2F3F73;
+  background-image:
+    linear-gradient(45deg, rgba(255,255,255,.1) 25%, transparent 25%, transparent 75%, rgba(255,255,255,.1) 75%),
+    linear-gradient(45deg, rgba(255,255,255,.1) 25%, transparent 25%, transparent 75%, rgba(255,255,255,.1) 75%);
+  background-size: 28px 28px;
+  background-position: 0 0, 14px 14px;
+}
+@keyframes marquee { to { transform: translateX(-50%); } }
+.marquee { animation: marquee 32s linear infinite; }
+@media (prefers-reduced-motion: reduce) { .marquee { animation: none; } }
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+input[type="date"] {
+  color-scheme: dark;
+}
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: brightness(0) invert(1);
+  opacity: 0.9;
+  cursor: pointer;
+}
+input[type="date"]::-webkit-calendar-picker-indicator:hover {
+  opacity: 1;
+}
